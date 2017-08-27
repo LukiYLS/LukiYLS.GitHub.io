@@ -350,9 +350,21 @@
       
         
           
-            <h1 id="阴影体实现要素贴地"><a href="#阴影体实现要素贴地" class="headerlink" title="阴影体实现要素贴地"></a>阴影体实现要素贴地</h1><h2 id="关于阴影实现方法概述"><a href="#关于阴影实现方法概述" class="headerlink" title="关于阴影实现方法概述"></a>关于阴影实现方法概述</h2><p>​    <strong>Shadow map:</strong> 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉如何处理（与深度图的分辨率有关，如果多个像素用同一个比较，就会出现这种情况），还有锯齿如何处理等等。</p>
+            <h1 id="Earth开发原理-阴影体实现要素贴地"><a href="#Earth开发原理-阴影体实现要素贴地" class="headerlink" title="Earth开发原理-阴影体实现要素贴地"></a>Earth开发原理-阴影体实现要素贴地</h1><h2 id="1-关于阴影实现方法概述"><a href="#1-关于阴影实现方法概述" class="headerlink" title="1.关于阴影实现方法概述"></a>1.关于阴影实现方法概述</h2><p>​    <strong>Shadow map:</strong> 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉如何处理（与深度图的分辨率有关，如果多个像素用同一个比较，就会出现这种情况），还有锯齿如何处理等等。</p>
 <p>具体可以看这篇教程：<a href="http://www.opengl-tutorial.org/cn/intermediate-tutorials/tutorial-16-shadow-mapping/" target="_blank" rel="external">Shadow map</a>。</p>
 <p>​    <strong>Shadow volume:</strong> 上面这种方法会有两个问题：1.如果光源动态变化，则每一次shadow map都要更新，这样开销会很大；2.上述出现的交叉阴影和锯齿问题，都没有一种很好的方法完美解决。因此Franklin C. Crow在1977年 提出了一种新的方法：Shadow volume。不过这种方法好像对于多源多的情况下，也并无优势。所以现在主流的依然是shadow map方法，可以结合deferred lighting技术。不过因为今天的主题是要用到阴影体这种方法，所以下面线详细介绍一下这种方法。</p>
+<p>##2.Shadow volume实现方法</p>
+<p>​    shadow volume主要用到的原理是模板测试和深度测试，通过这两个测试，把阴影部分的stencil buffer计算出来，然后render这部分就可得到阴影。</p>
+<p>​    第一步：构建阴影体。对mesh每一条边沿着光源方向进行拉伸，顶点部分除了原始的n个顶点(x,y,z,1)外，拉伸后的顶点同样也有n个，拉伸的长度应是无限远，但我们只有将其顶点形式设置为（x,y,z,0），在shader里面转换后自然就是无穷远处。面主要包括顶面、底面和侧面，底面三角形索引结构其实和顶面是一样的，侧面就是每一个quad由两个三角形组成，这样就可以得到阴影体的vertex buffer。</p>
+<p><img src="/upload/volume_contrust.jpg" alt="volume_contrust"></p>
+<p>​    第二步：Render pass。</p>
+<p>​    pass1：打开depth test，按正常方式渲染整个场景，得到depth map。</p>
+<p>​    pass2：打开stencil test，关掉z writing和color buffer writing，渲染shadow volumes；设置stencil test always pass，对于front faces，若z test pass，则stencil value +1，若z test fail，则不更新stencil value；对于back faces，若z test pass，则stencil value -1。</p>
+<p>​    pass3：pass2完成之后，stencil buffer中value不为0的像素就处于阴影区域，据此绘制阴影效果即可。</p>
+<p><img src="/upload/render_pass.jpg" alt="render_pass"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//pass1</span></div><div class="line">RenderVolumetoDepth();</div><div class="line"><span class="comment">//pass 2</span></div><div class="line">glDepthMask(GL_FALSE);</div><div class="line">glEnable(GL_DEPTH_CLAMP);</div><div class="line">glDisable(GL_CULL_FACE);</div><div class="line">glStencilFunc(GL_ALWAYS, <span class="number">0</span>, <span class="number">0xff</span>);    </div><div class="line">glStencilOpSeparate(GL_BACK, GL_KEEP, GL_INCR_WRAP, GL_KEEP);</div><div class="line">glStencilOpSeparate(GL_FRONT, GL_KEEP, GL_DECR_WRAP, GL_KEEP);</div><div class="line">RenderVolume();</div><div class="line"><span class="comment">//pass 3</span></div><div class="line">glStencilFunc(GL_EQUAL, <span class="number">0x0</span>, <span class="number">0xFF</span>);	</div><div class="line">glStencilOpSeparate(GL_BACK, GL_KEEP, GL_KEEP, GL_KEEP);</div><div class="line">RenderVolume();</div><div class="line">glDisable(GL_STENCIL_TEST);</div><div class="line">......</div></pre></td></tr></table></figure>
+<p>​    这样就可以实现一个简单的阴影效果了，其中核心就是利用模板测试标记出阴影部分，当然还有一些细节，比如多光源的时候需要遍历每一个光源，想根深一步了解可以看《GPU Gems》<a href="http://developer.download.nvidia.com/books/HTML/gpugems/gpugems_ch09.html" target="_blank" rel="external">Chapter 9. Efficient Shadow Volume Rendering</a>.</p>
+<h2 id="3-利用阴影体实现贴地效果"><a href="#3-利用阴影体实现贴地效果" class="headerlink" title="3.利用阴影体实现贴地效果"></a>3.利用阴影体实现贴地效果</h2><p>​    前面简单的介绍了一下shadow volume的原理，下面要进入正题，要素贴地。这算是三维球中一个很基本的功能，因为这会涉及要标会，量测，矢量要素加载等等，所以这个问题也必须解决，才能有后续这些相关功能的实现。一开始对这个没什么概念，想了很多方法，第一反应到的就是纹理。在有DEM数据的情况下，面对高低起伏的地形，如何将要素随着地形起伏，感觉只有将其作为一张纹理贴地和瓦片数据一样贴到地形网格上，才能完美贴地，好像osgearth就是这样做的，所以就去研究投影纹理技术，投影纹理就不展开讲了，就类似虚拟一个投影仪，然后将纹理投影到物体表面，</p>
 
           
         
