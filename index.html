@@ -279,7 +279,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/26/阴影体实现要素贴地/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/06/（url中显示的标题）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yanglusheng">
@@ -298,7 +298,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/26/阴影体实现要素贴地/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2017/04/06/（url中显示的标题）/" itemprop="url">name</a></h1>
         
 
         <div class="post-meta">
@@ -310,8 +310,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-26T23:30:15+08:00">
-                2017-08-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-06T10:34:21+08:00">
+                2017-04-06
               </time>
             
 
@@ -321,12 +321,45 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Earth开发原理/" itemprop="url" rel="index">
+                    <span itemprop="name">Earth开发原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
           
 
           
+          
+             <span id="/2017/04/06/（url中显示的标题）/" class="leancloud_visitors" data-flag-title="name">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -365,6 +398,7 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//pass1</span></div><div class="line">RenderVolumetoDepth();</div><div class="line"><span class="comment">//pass 2</span></div><div class="line">glDepthMask(GL_FALSE);</div><div class="line">glEnable(GL_DEPTH_CLAMP);</div><div class="line">glDisable(GL_CULL_FACE);</div><div class="line">glStencilFunc(GL_ALWAYS, <span class="number">0</span>, <span class="number">0xff</span>);    </div><div class="line">glStencilOpSeparate(GL_BACK, GL_KEEP, GL_INCR_WRAP, GL_KEEP);</div><div class="line">glStencilOpSeparate(GL_FRONT, GL_KEEP, GL_DECR_WRAP, GL_KEEP);</div><div class="line">RenderVolume();</div><div class="line"><span class="comment">//pass 3</span></div><div class="line">glStencilFunc(GL_EQUAL, <span class="number">0x0</span>, <span class="number">0xFF</span>);	</div><div class="line">glStencilOpSeparate(GL_BACK, GL_KEEP, GL_KEEP, GL_KEEP);</div><div class="line">RenderVolume();</div><div class="line">glDisable(GL_STENCIL_TEST);</div><div class="line">......</div></pre></td></tr></table></figure>
 <p>​    这样就可以实现一个简单的阴影效果了，其中核心就是利用模板测试标记出阴影部分，当然还有一些细节，比如多光源的时候需要遍历每一个光源，想根深一步了解可以看《GPU Gems》<a href="http://developer.download.nvidia.com/books/HTML/gpugems/gpugems_ch09.html" target="_blank" rel="external">Chapter 9. Efficient Shadow Volume Rendering</a>.</p>
 <h2 id="3-利用阴影体实现贴地效果"><a href="#3-利用阴影体实现贴地效果" class="headerlink" title="3.利用阴影体实现贴地效果"></a>3.利用阴影体实现贴地效果</h2><p>​    前面简单的介绍了一下shadow volume的原理，下面要进入正题，要素贴地。这算是三维球中一个很基本的功能，因为这会涉及要标会，量测，矢量要素加载等等，所以这个问题也必须解决，才能有后续这些相关功能的实现。一开始对这个没什么概念，想了很多方法，第一反应到的就是纹理。在有DEM数据的情况下，面对高低起伏的地形，如何将要素随着地形起伏，感觉只有将其作为一张纹理贴地和瓦片数据一样贴到地形网格上，才能完美贴地，好像osgearth就是这样做的，所以就去研究投影纹理技术，投影纹理就不展开讲了，就类似虚拟一个投影仪，然后将纹理投影到物体表面，</p>
+<p><img src="/upload/terrian_volume.jpg" alt="terrian_volume"></p>
 
           
         
@@ -484,6 +518,17 @@
 
           
           
+             <span id="/2016/04/06/（url中显示的标题）/" class="leancloud_visitors" data-flag-title="name">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
@@ -601,7 +646,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -612,7 +657,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -672,6 +717,26 @@
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
 
 
 
@@ -808,6 +873,113 @@
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("RqLJeAHxgJYzXuXlSXDFYuQe-gzGzoHsz", "854t3N6xanB861Eu3tsCEWEP");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 

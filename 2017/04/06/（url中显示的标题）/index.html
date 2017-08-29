@@ -83,7 +83,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="开始,日志," />
+  <meta name="keywords" content="三维GIS,图形算法," />
 
 
 
@@ -99,20 +99,22 @@
 
 
 
-<meta name="description" content="Hello world，Test！！">
-<meta name="keywords" content="开始,日志">
+<meta name="description" content="Earth开发原理-阴影体实现要素贴地1.关于阴影实现方法概述​    Shadow map: 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉如何处理（与深度">
+<meta name="keywords" content="三维GIS,图形算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="name">
-<meta property="og:url" content="http://yoursite.com/2016/04/06/（url中显示的标题）/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/04/06/（url中显示的标题）/index.html">
 <meta property="og:site_name" content="Start from here">
-<meta property="og:description" content="Hello world，Test！！">
+<meta property="og:description" content="Earth开发原理-阴影体实现要素贴地1.关于阴影实现方法概述​    Shadow map: 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉如何处理（与深度">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/upload/test.jpg">
-<meta property="og:updated_time" content="2017-08-27T10:44:34.899Z">
+<meta property="og:image" content="http://yoursite.com/upload/volume_contrust.jpg">
+<meta property="og:image" content="http://yoursite.com/upload/render_pass.jpg">
+<meta property="og:image" content="http://yoursite.com/upload/terrian_volume.jpg">
+<meta property="og:updated_time" content="2017-08-27T14:21:28.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="name">
-<meta name="twitter:description" content="Hello world，Test！！">
-<meta name="twitter:image" content="http://yoursite.com/upload/test.jpg">
+<meta name="twitter:description" content="Earth开发原理-阴影体实现要素贴地1.关于阴影实现方法概述​    Shadow map: 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉如何处理（与深度">
+<meta name="twitter:image" content="http://yoursite.com/upload/volume_contrust.jpg">
 
 
 
@@ -142,7 +144,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/04/06/（url中显示的标题）/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/06/（url中显示的标题）/"/>
 
 
 
@@ -285,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/04/06/（url中显示的标题）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/06/（url中显示的标题）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yanglusheng">
@@ -314,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-06T10:34:21+08:00">
-                2016-04-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-06T10:34:21+08:00">
+                2017-04-06
               </time>
             
 
@@ -337,8 +339,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日志/" itemprop="url" rel="index">
-                    <span itemprop="name">日志</span>
+                  <a href="/categories/Earth开发原理/" itemprop="url" rel="index">
+                    <span itemprop="name">Earth开发原理</span>
                   </a>
                 </span>
 
@@ -354,7 +356,7 @@
 
           
           
-             <span id="/2016/04/06/（url中显示的标题）/" class="leancloud_visitors" data-flag-title="name">
+             <span id="/2017/04/06/（url中显示的标题）/" class="leancloud_visitors" data-flag-title="name">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -390,7 +392,22 @@
       
 
       
-        <p>Hello world，Test！！<img src="/upload/test.jpg" alt="1"></p>
+        <h1 id="Earth开发原理-阴影体实现要素贴地"><a href="#Earth开发原理-阴影体实现要素贴地" class="headerlink" title="Earth开发原理-阴影体实现要素贴地"></a>Earth开发原理-阴影体实现要素贴地</h1><h2 id="1-关于阴影实现方法概述"><a href="#1-关于阴影实现方法概述" class="headerlink" title="1.关于阴影实现方法概述"></a>1.关于阴影实现方法概述</h2><p>​    <strong>Shadow map:</strong> 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉如何处理（与深度图的分辨率有关，如果多个像素用同一个比较，就会出现这种情况），还有锯齿如何处理等等。</p>
+<p>具体可以看这篇教程：<a href="http://www.opengl-tutorial.org/cn/intermediate-tutorials/tutorial-16-shadow-mapping/" target="_blank" rel="external">Shadow map</a>。</p>
+<p>​    <strong>Shadow volume:</strong> 上面这种方法会有两个问题：1.如果光源动态变化，则每一次shadow map都要更新，这样开销会很大；2.上述出现的交叉阴影和锯齿问题，都没有一种很好的方法完美解决。因此Franklin C. Crow在1977年 提出了一种新的方法：Shadow volume。不过这种方法好像对于多源多的情况下，也并无优势。所以现在主流的依然是shadow map方法，可以结合deferred lighting技术。不过因为今天的主题是要用到阴影体这种方法，所以下面线详细介绍一下这种方法。</p>
+<p>##2.Shadow volume实现方法</p>
+<p>​    shadow volume主要用到的原理是模板测试和深度测试，通过这两个测试，把阴影部分的stencil buffer计算出来，然后render这部分就可得到阴影。</p>
+<p>​    第一步：构建阴影体。对mesh每一条边沿着光源方向进行拉伸，顶点部分除了原始的n个顶点(x,y,z,1)外，拉伸后的顶点同样也有n个，拉伸的长度应是无限远，但我们只有将其顶点形式设置为（x,y,z,0），在shader里面转换后自然就是无穷远处。面主要包括顶面、底面和侧面，底面三角形索引结构其实和顶面是一样的，侧面就是每一个quad由两个三角形组成，这样就可以得到阴影体的vertex buffer。</p>
+<p><img src="/upload/volume_contrust.jpg" alt="volume_contrust"></p>
+<p>​    第二步：Render pass。</p>
+<p>​    pass1：打开depth test，按正常方式渲染整个场景，得到depth map。</p>
+<p>​    pass2：打开stencil test，关掉z writing和color buffer writing，渲染shadow volumes；设置stencil test always pass，对于front faces，若z test pass，则stencil value +1，若z test fail，则不更新stencil value；对于back faces，若z test pass，则stencil value -1。</p>
+<p>​    pass3：pass2完成之后，stencil buffer中value不为0的像素就处于阴影区域，据此绘制阴影效果即可。</p>
+<p><img src="/upload/render_pass.jpg" alt="render_pass"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//pass1</span></div><div class="line">RenderVolumetoDepth();</div><div class="line"><span class="comment">//pass 2</span></div><div class="line">glDepthMask(GL_FALSE);</div><div class="line">glEnable(GL_DEPTH_CLAMP);</div><div class="line">glDisable(GL_CULL_FACE);</div><div class="line">glStencilFunc(GL_ALWAYS, <span class="number">0</span>, <span class="number">0xff</span>);    </div><div class="line">glStencilOpSeparate(GL_BACK, GL_KEEP, GL_INCR_WRAP, GL_KEEP);</div><div class="line">glStencilOpSeparate(GL_FRONT, GL_KEEP, GL_DECR_WRAP, GL_KEEP);</div><div class="line">RenderVolume();</div><div class="line"><span class="comment">//pass 3</span></div><div class="line">glStencilFunc(GL_EQUAL, <span class="number">0x0</span>, <span class="number">0xFF</span>);	</div><div class="line">glStencilOpSeparate(GL_BACK, GL_KEEP, GL_KEEP, GL_KEEP);</div><div class="line">RenderVolume();</div><div class="line">glDisable(GL_STENCIL_TEST);</div><div class="line">......</div></pre></td></tr></table></figure>
+<p>​    这样就可以实现一个简单的阴影效果了，其中核心就是利用模板测试标记出阴影部分，当然还有一些细节，比如多光源的时候需要遍历每一个光源，想根深一步了解可以看《GPU Gems》<a href="http://developer.download.nvidia.com/books/HTML/gpugems/gpugems_ch09.html" target="_blank" rel="external">Chapter 9. Efficient Shadow Volume Rendering</a>.</p>
+<h2 id="3-利用阴影体实现贴地效果"><a href="#3-利用阴影体实现贴地效果" class="headerlink" title="3.利用阴影体实现贴地效果"></a>3.利用阴影体实现贴地效果</h2><p>​    前面简单的介绍了一下shadow volume的原理，下面要进入正题，要素贴地。这算是三维球中一个很基本的功能，因为这会涉及要标会，量测，矢量要素加载等等，所以这个问题也必须解决，才能有后续这些相关功能的实现。一开始对这个没什么概念，想了很多方法，第一反应到的就是纹理。在有DEM数据的情况下，面对高低起伏的地形，如何将要素随着地形起伏，感觉只有将其作为一张纹理贴地和瓦片数据一样贴到地形网格上，才能完美贴地，好像osgearth就是这样做的，所以就去研究投影纹理技术，投影纹理就不展开讲了，就类似虚拟一个投影仪，然后将纹理投影到物体表面，</p>
+<p><img src="/upload/terrian_volume.jpg" alt="terrian_volume"></p>
 
       
     </div>
@@ -408,9 +425,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/开始/" rel="tag"># 开始</a>
+            <a href="/tags/三维GIS/" rel="tag"># 三维GIS</a>
           
-            <a href="/tags/日志/" rel="tag"># 日志</a>
+            <a href="/tags/图形算法/" rel="tag"># 图形算法</a>
           
         </div>
       
@@ -423,15 +440,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/04/06/（url中显示的标题）/" rel="next" title="name">
+                <i class="fa fa-chevron-left"></i> name
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/06/（url中显示的标题）/" rel="prev" title="name">
-                name <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -483,8 +500,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -548,6 +574,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Earth开发原理-阴影体实现要素贴地"><span class="nav-number">1.</span> <span class="nav-text">Earth开发原理-阴影体实现要素贴地</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-关于阴影实现方法概述"><span class="nav-number">1.1.</span> <span class="nav-text">1.关于阴影实现方法概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-利用阴影体实现贴地效果"><span class="nav-number">1.2.</span> <span class="nav-text">3.利用阴影体实现贴地效果</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
