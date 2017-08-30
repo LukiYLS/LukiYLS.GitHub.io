@@ -99,21 +99,21 @@
 
 
 
-<meta name="description" content="Earth开发原理-阴影体实现要素贴地1.关于阴影实现方法概述​    Shadow map: 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉如何处理（与深度">
+<meta name="description" content="1.关于阴影实现方法概述">
 <meta name="keywords" content="三维GIS,图形算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="name">
+<meta property="og:title" content="Earth开发原理-阴影体实现要素贴地">
 <meta property="og:url" content="http://yoursite.com/2017/04/06/（url中显示的标题）/index.html">
 <meta property="og:site_name" content="Start from here">
-<meta property="og:description" content="Earth开发原理-阴影体实现要素贴地1.关于阴影实现方法概述​    Shadow map: 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉如何处理（与深度">
+<meta property="og:description" content="1.关于阴影实现方法概述">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/upload/volume_contrust.jpg">
 <meta property="og:image" content="http://yoursite.com/upload/render_pass.jpg">
 <meta property="og:image" content="http://yoursite.com/upload/terrian_volume.jpg">
-<meta property="og:updated_time" content="2017-08-27T14:21:28.850Z">
+<meta property="og:updated_time" content="2017-08-30T12:39:18.583Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="name">
-<meta name="twitter:description" content="Earth开发原理-阴影体实现要素贴地1.关于阴影实现方法概述​    Shadow map: 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉如何处理（与深度">
+<meta name="twitter:title" content="Earth开发原理-阴影体实现要素贴地">
+<meta name="twitter:description" content="1.关于阴影实现方法概述">
 <meta name="twitter:image" content="http://yoursite.com/upload/volume_contrust.jpg">
 
 
@@ -150,7 +150,7 @@
 
 
 
-  <title>name | Start from here</title>
+  <title>Earth开发原理-阴影体实现要素贴地 | Start from here</title>
   
 
 
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">name</h1>
+          <h1 class="post-title" itemprop="name headline">Earth开发原理-阴影体实现要素贴地</h1>
         
 
         <div class="post-meta">
@@ -366,7 +366,7 @@
 
           
           
-             <span id="/2017/04/06/（url中显示的标题）/" class="leancloud_visitors" data-flag-title="name">
+             <span id="/2017/04/06/（url中显示的标题）/" class="leancloud_visitors" data-flag-title="Earth开发原理-阴影体实现要素贴地">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -402,11 +402,11 @@
       
 
       
-        <h1 id="Earth开发原理-阴影体实现要素贴地"><a href="#Earth开发原理-阴影体实现要素贴地" class="headerlink" title="Earth开发原理-阴影体实现要素贴地"></a>Earth开发原理-阴影体实现要素贴地</h1><h2 id="1-关于阴影实现方法概述"><a href="#1-关于阴影实现方法概述" class="headerlink" title="1.关于阴影实现方法概述"></a>1.关于阴影实现方法概述</h2><p>​    <strong>Shadow map:</strong> 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉如何处理（与深度图的分辨率有关，如果多个像素用同一个比较，就会出现这种情况），还有锯齿如何处理等等。</p>
+        <h2 id="1-关于阴影实现方法概述"><a href="#1-关于阴影实现方法概述" class="headerlink" title="1.关于阴影实现方法概述"></a>1.关于阴影实现方法概述</h2><a id="more"></a>
+<p>​    <strong>Shadow map:</strong> 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉如何处理（与深度图的分辨率有关，如果多个像素用同一个比较，就会出现这种情况），还有锯齿如何处理等等。</p>
 <p>具体可以看这篇教程：<a href="http://www.opengl-tutorial.org/cn/intermediate-tutorials/tutorial-16-shadow-mapping/" target="_blank" rel="external">Shadow map</a>。</p>
 <p>​    <strong>Shadow volume:</strong> 上面这种方法会有两个问题：1.如果光源动态变化，则每一次shadow map都要更新，这样开销会很大；2.上述出现的交叉阴影和锯齿问题，都没有一种很好的方法完美解决。因此Franklin C. Crow在1977年 提出了一种新的方法：Shadow volume。不过这种方法好像对于多源多的情况下，也并无优势。所以现在主流的依然是shadow map方法，可以结合deferred lighting技术。不过因为今天的主题是要用到阴影体这种方法，所以下面线详细介绍一下这种方法。</p>
-<p>##2.Shadow volume实现方法</p>
-<p>​    shadow volume主要用到的原理是模板测试和深度测试，通过这两个测试，把阴影部分的stencil buffer计算出来，然后render这部分就可得到阴影。</p>
+<h2 id="2-Shadow-volume实现方法"><a href="#2-Shadow-volume实现方法" class="headerlink" title="2.Shadow volume实现方法"></a>2.Shadow volume实现方法</h2><p>​    shadow volume主要用到的原理是模板测试和深度测试，通过这两个测试，把阴影部分的stencil buffer计算出来，然后render这部分就可得到阴影。</p>
 <p>​    第一步：构建阴影体。对mesh每一条边沿着光源方向进行拉伸，顶点部分除了原始的n个顶点(x,y,z,1)外，拉伸后的顶点同样也有n个，拉伸的长度应是无限远，但我们只有将其顶点形式设置为（x,y,z,0），在shader里面转换后自然就是无穷远处。面主要包括顶面、底面和侧面，底面三角形索引结构其实和顶面是一样的，侧面就是每一个quad由两个三角形组成，这样就可以得到阴影体的vertex buffer。</p>
 <p><img src="/upload/volume_contrust.jpg" alt="volume_contrust"></p>
 <p>​    第二步：Render pass。</p>
@@ -618,7 +618,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Earth开发原理-阴影体实现要素贴地"><span class="nav-number">1.</span> <span class="nav-text">Earth开发原理-阴影体实现要素贴地</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-关于阴影实现方法概述"><span class="nav-number">1.1.</span> <span class="nav-text">1.关于阴影实现方法概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-利用阴影体实现贴地效果"><span class="nav-number">1.2.</span> <span class="nav-text">3.利用阴影体实现贴地效果</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-关于阴影实现方法概述"><span class="nav-number">1.</span> <span class="nav-text">1.关于阴影实现方法概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Shadow-volume实现方法"><span class="nav-number">2.</span> <span class="nav-text">2.Shadow volume实现方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-利用阴影体实现贴地效果"><span class="nav-number">3.</span> <span class="nav-text">3.利用阴影体实现贴地效果</span></a></li></ol></div>
             
 
           </div>
