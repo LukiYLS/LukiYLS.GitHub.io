@@ -109,8 +109,9 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ovi6hpv55.bkt.clouddn.com/volume_contrust.jpg">
 <meta property="og:image" content="http://ovi6hpv55.bkt.clouddn.com/render_pass.jpg">
+<meta property="og:image" content="http://ovi6hpv55.bkt.clouddn.com/terrian_volume.jpg">
 <meta property="og:image" content="http://ovi6hpv55.bkt.clouddn.com/clamp_terrian.png">
-<meta property="og:updated_time" content="2017-08-30T14:54:45.775Z">
+<meta property="og:updated_time" content="2017-08-31T13:03:38.756Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Earth开发原理-阴影体实现要素贴地">
 <meta name="twitter:description" content="1.关于阴影实现方法概述​    Shadow map: 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉">
@@ -422,7 +423,7 @@
 <p>​    阴影体这个方法是看了cesium的源码才知道原来贴地还可以这样，关于cesium后面应该还会有很多篇博客来讲其中的一些图形学知识，因为近期一直在研究它的源码，cesium算是web端的标杆了，类似pc端的oe，现在很多都在用它搞二次开发，比如超图。我们虽然没有直接用它，但是很多地方都在借鉴它的一些原理，其实我觉得这才是开源的意义，开源并不是让你可以直接用它进行二次开发，更主要的是你能够弄懂里面的一些原理，并为自己所用，这叫站在巨人的肩膀上。现在很多所谓的三维GIS创业公司，不过是做了点二次开发，包装了一个界面，就拿出来骗钱，非常可笑。不过也是，这几年政府的钱太好骗了，不过这样的没点技术积累的公司基本也存活不了多久。好了，不说废话了，开始装逼了。</p>
 <p>​    前面说了阴影体怎么构建，那到了有DEM的情况下，又应该如何构建呢？比如说画一个Polygon，首先要做的就是拉伸，那拉伸又包括拉伸方向和拉伸高度，拉伸方向很简单就是顶点法线，拉伸高度应该与polygon所在地形高程与关，必须保持拉伸高度超过其范围之内的最大高程，所以拉伸高度就是高程的最大值。</p>
 <p>​    阴影体构建之后，又如何只绘制贴地部分呢，这就要用到前面说的模板测试和深度测试了，这里有会有三个pass，不过这三个pass与前面的有点区别。</p>
-<p>![terrian_volume]<a href="http://ovi6hpv55.bkt.clouddn.com/terrian_volume.jpg" target="_blank" rel="external">http://ovi6hpv55.bkt.clouddn.com/terrian_volume.jpg</a>)</p>
+<p><img src="http://ovi6hpv55.bkt.clouddn.com/terrian_volume.jpg" alt="terrian_volume"></p>
 <p>​    前面两个pass可以直接表示出贴地部分的模板只，所以第三个pass只需要让其通过模板测试即可将其绘制出来。</p>
 <p><img src="http://ovi6hpv55.bkt.clouddn.com/clamp_terrian.png" alt="clamp_terrian"></p>
 <h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h2><p>​    这算是我我开通博客站点后的第一篇博客，我就喜欢这种直接上干货的形式，毕竟这也是我想写博客的目的，积累和分享。同时也希望能保存博客的质量，只要是拿出来的，一定要有价值。这篇博客的分类是Earth开发原理，意味着以后我会陆续把我在开发三维earth过程中，一些有价值，有意思的技术分享出来，但我并不会直接把源码放出来，因为我分享的技术。也希望有看到的朋友多提建议，共同交流。</p>
@@ -439,7 +440,7 @@
     
       <div>
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div></div>
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
     <span>Donate</span>
   </button>
