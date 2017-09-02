@@ -83,7 +83,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="C++,服务器," />
 
 
 
@@ -99,13 +99,21 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="有知而无畏">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="​    用户访问三维earth过程中，客户端会源源不断的向服务器请求数据，尤其是多用户并发的情况下，请求更加频繁，所以服务器通常会设置缓存容器，主要是DEM和DOM缓存池，数据从server中请求后，会在服务器同时保留一份。比如请求google 影像，服务器根据wtms服务地址以及用户请求的瓦片层级，然后利用HTTP协议将数据传输至服务器，这时候服务器就将数据进行备份，这样等下一次在请求同样的数">
+<meta name="keywords" content="C++,服务器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Earth开发原理-基于LRU-K实现瓦片数据析构算法">
+<meta property="og:url" content="http://yoursite.com/2017/09/02/（url中显示的标题）/index.html">
 <meta property="og:site_name" content="有知而无畏">
+<meta property="og:description" content="​    用户访问三维earth过程中，客户端会源源不断的向服务器请求数据，尤其是多用户并发的情况下，请求更加频繁，所以服务器通常会设置缓存容器，主要是DEM和DOM缓存池，数据从server中请求后，会在服务器同时保留一份。比如请求google 影像，服务器根据wtms服务地址以及用户请求的瓦片层级，然后利用HTTP协议将数据传输至服务器，这时候服务器就将数据进行备份，这样等下一次在请求同样的数">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ovi6hpv55.bkt.clouddn.com/LRU.png">
+<meta property="og:image" content="http://ovi6hpv55.bkt.clouddn.com/LRU-K.png">
+<meta property="og:updated_time" content="2017-09-02T12:59:15.870Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="有知而无畏">
+<meta name="twitter:title" content="Earth开发原理-基于LRU-K实现瓦片数据析构算法">
+<meta name="twitter:description" content="​    用户访问三维earth过程中，客户端会源源不断的向服务器请求数据，尤其是多用户并发的情况下，请求更加频繁，所以服务器通常会设置缓存容器，主要是DEM和DOM缓存池，数据从server中请求后，会在服务器同时保留一份。比如请求google 影像，服务器根据wtms服务地址以及用户请求的瓦片层级，然后利用HTTP协议将数据传输至服务器，这时候服务器就将数据进行备份，这样等下一次在请求同样的数">
+<meta name="twitter:image" content="http://ovi6hpv55.bkt.clouddn.com/LRU.png">
 
 
 
@@ -135,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/02/（url中显示的标题）/"/>
 
 
 
 
 
-  <title>有知而无畏</title>
+  <title>Earth开发原理-基于LRU-K实现瓦片数据析构算法 | 有知而无畏</title>
   
 
 
@@ -160,8 +168,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -264,9 +271,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -296,9 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/02/（url中显示的标题）/" itemprop="url">Earth开发原理-基于LRU-K实现瓦片数据析构算法</a></h1>
+          <h1 class="post-title" itemprop="name headline">Earth开发原理-基于LRU-K实现瓦片数据析构算法</h1>
         
 
         <div class="post-meta">
@@ -353,7 +358,7 @@
               </span>
               
                 <a href="/2017/09/02/（url中显示的标题）/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://yoursite.com/2017/09/02/（url中显示的标题）/" class="cy_cmt_count" data-xid="2017/09/02/（url中显示的标题）/" itemprop="commentsCount" ></span>
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/09/02/（url中显示的标题）/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -374,6 +379,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
 
           
 
@@ -392,9 +402,7 @@
       
 
       
-        
-          
-            <p>​    用户访问三维earth过程中，客户端会源源不断的向服务器请求数据，尤其是多用户并发的情况下，请求更加频繁，所以服务器通常会设置缓存容器，主要是DEM和DOM缓存池，数据从server中请求后，会在服务器同时保留一份。比如请求google 影像，服务器根据wtms服务地址以及用户请求的瓦片层级，然后利用HTTP协议将数据传输至服务器，这时候服务器就将数据进行备份，这样等下一次在请求同样的数据时，就可以直接从服务器中获取，这样可以提高用户访问效率。然而，随着用户访问的增加，服务器缓存压力必然也会加大，所以就需要及时析构一些数据，保证服务器缓存池不会爆。</p>
+        <p>​    用户访问三维earth过程中，客户端会源源不断的向服务器请求数据，尤其是多用户并发的情况下，请求更加频繁，所以服务器通常会设置缓存容器，主要是DEM和DOM缓存池，数据从server中请求后，会在服务器同时保留一份。比如请求google 影像，服务器根据wtms服务地址以及用户请求的瓦片层级，然后利用HTTP协议将数据传输至服务器，这时候服务器就将数据进行备份，这样等下一次在请求同样的数据时，就可以直接从服务器中获取，这样可以提高用户访问效率。然而，随着用户访问的增加，服务器缓存压力必然也会加大，所以就需要及时析构一些数据，保证服务器缓存池不会爆。</p>
 <h2 id="LRU和LRU-K算法概述"><a href="#LRU和LRU-K算法概述" class="headerlink" title="LRU和LRU-K算法概述"></a>LRU和LRU-K算法概述</h2><p>​    缓存淘汰算法包括LRU、LFU和FIFO，关于这三种算法的比较，可以看一这篇博客：</p>
 <p><a href="http://www.cnblogs.com/dolphin0520/p/3749259.html" target="_blank" rel="external">缓存算法（页面置换算法）-FIFO、LFU、LRU</a></p>
 <p>​    这里只对LRU-K（LRU-K改进）算法作一个简单介绍，LRU或者LRU-K缓存析构算法是一种比较简单常用的缓存淘汰机制，LRU主要根据资源访问时间来淘汰数据，也就是说访问数据间隔越久，其淘汰顺序应该是月优先，所以在设计算法时，只需要设计一个队列来存储每个资源的访问时间，新访问的数据放到最前，这样就可以保证末尾的数据时间间隔最久，每次淘汰只需从末尾开始淘汰。</p>
@@ -421,8 +429,6 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">visit_count_plus_one</span><span class="params">(geocode gc_)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	_visit_record_mutex-&gt;lock();</div><div class="line">	<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;RECORD_TYPE&gt;::iterator it = _visit_record_vec.begin();</div><div class="line">	<span class="keyword">for</span> (; it != _visit_record_vec.end(); ++it)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (it-&gt;first == gc_)</div><div class="line">		&#123;</div><div class="line">			it-&gt;second--;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	_visit_record_mutex-&gt;unlock();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>​    这个析构算法，虽然到现在并没有真正测试多用户并发情况下的效率，只是可以保证内存池能够稳定在阈值之内，可以到实际情况，还需要不断的优化和改进，因为数据加载效率也是非常重要的考量。</p>
 
-          
-        
       
     </div>
     
@@ -432,187 +438,67 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="yanglusheng WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/26/（url中显示的标题）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yanglusheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="有知而无畏">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/26/（url中显示的标题）/" itemprop="url">Earth开发原理-阴影体实现要素贴地</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-26T10:34:21+08:00">
-                2017-08-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Earth开发原理/" itemprop="url" rel="index">
-                    <span itemprop="name">Earth开发原理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/C/" rel="tag"># C++</a>
           
-
+            <a href="/tags/服务器/" rel="tag"># 服务器</a>
           
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2017/08/26/（url中显示的标题）/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://yoursite.com/2017/08/26/（url中显示的标题）/" class="cy_cmt_count" data-xid="2017/08/26/（url中显示的标题）/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/2017/08/26/（url中显示的标题）/" class="leancloud_visitors" data-flag-title="Earth开发原理-阴影体实现要素贴地">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <h2 id="关于阴影实现方法概述"><a href="#关于阴影实现方法概述" class="headerlink" title="关于阴影实现方法概述"></a>关于阴影实现方法概述</h2><p>​    <strong>Shadow map:</strong> 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/26/（url中显示的标题）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/26/（url中显示的标题）/" rel="next" title="Earth开发原理-阴影体实现要素贴地">
+                <i class="fa fa-chevron-left"></i> Earth开发原理-阴影体实现要素贴地
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -622,10 +508,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -633,6 +520,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
 
         </div>
         
@@ -653,8 +546,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -742,6 +644,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LRU和LRU-K算法概述"><span class="nav-number">1.</span> <span class="nav-text">LRU和LRU-K算法概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#瓦片数据析构算法实现"><span class="nav-number">2.</span> <span class="nav-text">瓦片数据析构算法实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -885,10 +803,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
@@ -923,7 +841,18 @@
 
 
   
-    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytbQ8t9f"></script>
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytbQ8t9f';
+      var conf = 'a29593692d36dd6143fc58db5ae3845f';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
   
 
 
