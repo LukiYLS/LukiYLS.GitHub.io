@@ -109,7 +109,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ovi6hpv55.bkt.clouddn.com/LRU.png">
 <meta property="og:image" content="http://ovi6hpv55.bkt.clouddn.com/LRU-K.png">
-<meta property="og:updated_time" content="2017-09-02T12:59:15.870Z">
+<meta property="og:updated_time" content="2017-09-02T13:01:00.930Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Earth开发原理-基于LRU-K实现瓦片数据析构算法">
 <meta name="twitter:description" content="​    用户访问三维earth过程中，客户端会源源不断的向服务器请求数据，尤其是多用户并发的情况下，请求更加频繁，所以服务器通常会设置缓存容器，主要是DEM和DOM缓存池，数据从server中请求后，会在服务器同时保留一份。比如请求google 影像，服务器根据wtms服务地址以及用户请求的瓦片层级，然后利用HTTP协议将数据传输至服务器，这时候服务器就将数据进行备份，这样等下一次在请求同样的数">
@@ -403,6 +403,7 @@
 
       
         <p>​    用户访问三维earth过程中，客户端会源源不断的向服务器请求数据，尤其是多用户并发的情况下，请求更加频繁，所以服务器通常会设置缓存容器，主要是DEM和DOM缓存池，数据从server中请求后，会在服务器同时保留一份。比如请求google 影像，服务器根据wtms服务地址以及用户请求的瓦片层级，然后利用HTTP协议将数据传输至服务器，这时候服务器就将数据进行备份，这样等下一次在请求同样的数据时，就可以直接从服务器中获取，这样可以提高用户访问效率。然而，随着用户访问的增加，服务器缓存压力必然也会加大，所以就需要及时析构一些数据，保证服务器缓存池不会爆。</p>
+<a id="more"></a>
 <h2 id="LRU和LRU-K算法概述"><a href="#LRU和LRU-K算法概述" class="headerlink" title="LRU和LRU-K算法概述"></a>LRU和LRU-K算法概述</h2><p>​    缓存淘汰算法包括LRU、LFU和FIFO，关于这三种算法的比较，可以看一这篇博客：</p>
 <p><a href="http://www.cnblogs.com/dolphin0520/p/3749259.html" target="_blank" rel="external">缓存算法（页面置换算法）-FIFO、LFU、LRU</a></p>
 <p>​    这里只对LRU-K（LRU-K改进）算法作一个简单介绍，LRU或者LRU-K缓存析构算法是一种比较简单常用的缓存淘汰机制，LRU主要根据资源访问时间来淘汰数据，也就是说访问数据间隔越久，其淘汰顺序应该是月优先，所以在设计算法时，只需要设计一个队列来存储每个资源的访问时间，新访问的数据放到最前，这样就可以保证末尾的数据时间间隔最久，每次淘汰只需从末尾开始淘汰。</p>

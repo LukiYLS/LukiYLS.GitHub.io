@@ -99,22 +99,22 @@
 
 
 
-<meta name="description" content="关于阴影实现方法概述​    Shadow map: 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉">
+<meta name="description" content="关于阴影实现方法概述​    Shadow map: 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉如何处理（与深度图的分辨率有关，如果多个像素用同一个比较，">
 <meta name="keywords" content="三维GIS,图形算法,WebGL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Earth开发原理-阴影体实现要素贴地">
 <meta property="og:url" content="http://yoursite.com/2017/08/26/（url中显示的标题）/index.html">
 <meta property="og:site_name" content="有知而无畏">
-<meta property="og:description" content="关于阴影实现方法概述​    Shadow map: 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉">
+<meta property="og:description" content="关于阴影实现方法概述​    Shadow map: 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉如何处理（与深度图的分辨率有关，如果多个像素用同一个比较，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ovi6hpv55.bkt.clouddn.com/volume_contrust.jpg">
 <meta property="og:image" content="http://ovi6hpv55.bkt.clouddn.com/render_pass.jpg">
 <meta property="og:image" content="http://ovi6hpv55.bkt.clouddn.com/terrian_volume.jpg">
 <meta property="og:image" content="http://ovi6hpv55.bkt.clouddn.com/clamp_terrian.png">
-<meta property="og:updated_time" content="2017-09-02T12:58:55.897Z">
+<meta property="og:updated_time" content="2017-09-02T13:01:02.843Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Earth开发原理-阴影体实现要素贴地">
-<meta name="twitter:description" content="关于阴影实现方法概述​    Shadow map: 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉">
+<meta name="twitter:description" content="关于阴影实现方法概述​    Shadow map: 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉如何处理（与深度图的分辨率有关，如果多个像素用同一个比较，">
 <meta name="twitter:image" content="http://ovi6hpv55.bkt.clouddn.com/volume_contrust.jpg">
 
 
@@ -404,9 +404,8 @@
       
 
       
-        <h2 id="关于阴影实现方法概述"><a href="#关于阴影实现方法概述" class="headerlink" title="关于阴影实现方法概述"></a>关于阴影实现方法概述</h2><p>​    <strong>Shadow map:</strong> 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉</p>
+        <h2 id="关于阴影实现方法概述"><a href="#关于阴影实现方法概述" class="headerlink" title="关于阴影实现方法概述"></a>关于阴影实现方法概述</h2><p>​    <strong>Shadow map:</strong> 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉如何处理（与深度图的分辨率有关，如果多个像素用同一个比较，就会出现这种情况），还有锯齿如何处理等等。</p>
 <a id="more"></a>
-<p>如何处理（与深度图的分辨率有关，如果多个像素用同一个比较，就会出现这种情况），还有锯齿如何处理等等。</p>
 <p>具体可以看这篇教程：<a href="http://www.opengl-tutorial.org/cn/intermediate-tutorials/tutorial-16-shadow-mapping/" target="_blank" rel="external">Shadow map</a>。</p>
 <p>​    <strong>Shadow volume:</strong> 上面这种方法会有两个问题：1.如果光源动态变化，则每一次shadow map都要更新，这样开销会很大；2.上述出现的交叉阴影和锯齿问题，都没有一种很好的方法完美解决。因此Franklin C. Crow在1977年 提出了一种新的方法：Shadow volume。不过这种方法好像对于多光源的情况下，也并无优势。所以现在主流的依然是shadow map方法，可以结合deferred lighting技术。不过因为今天的主题是要用到阴影体这种方法，所以下面线详细介绍一下这种方法。</p>
 <h2 id="Shadow-volume实现方法"><a href="#Shadow-volume实现方法" class="headerlink" title="Shadow volume实现方法"></a>Shadow volume实现方法</h2><p>​    shadow volume主要用到的原理是模板测试和深度测试，通过这两个测试，把阴影部分的stencil buffer计算出来，然后render这部分就可得到阴影。</p>
