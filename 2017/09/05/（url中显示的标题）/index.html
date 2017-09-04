@@ -83,7 +83,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="C++,OpenGL," />
 
 
 
@@ -99,13 +99,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="I am no one">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="前言​    最近 准备开始写一个自己的渲染引擎，主要有两个目的：一是为了系统的学习关于如何从底层开始写一个渲染引擎，二是为了以后方便给自己用；我会在博客和github上同步更新我的进度，博客的目的是为了把自己开发过程中的思路记录下来，同时也希望能找到志同道合之人一起学习进步，如果自己的经验能够给别人有点帮助那就最好不过了，同时所有的代码都会更新到github当中，如果有人能加入一起造轮子，那我会">
+<meta name="keywords" content="C++,OpenGL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始写渲染引擎-开篇">
+<meta property="og:url" content="http://yoursite.com/2017/09/05/（url中显示的标题）/index.html">
 <meta property="og:site_name" content="I am no one">
+<meta property="og:description" content="前言​    最近 准备开始写一个自己的渲染引擎，主要有两个目的：一是为了系统的学习关于如何从底层开始写一个渲染引擎，二是为了以后方便给自己用；我会在博客和github上同步更新我的进度，博客的目的是为了把自己开发过程中的思路记录下来，同时也希望能找到志同道合之人一起学习进步，如果自己的经验能够给别人有点帮助那就最好不过了，同时所有的代码都会更新到github当中，如果有人能加入一起造轮子，那我会">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-04T14:51:49.277Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="I am no one">
+<meta name="twitter:title" content="从零开始写渲染引擎-开篇">
+<meta name="twitter:description" content="前言​    最近 准备开始写一个自己的渲染引擎，主要有两个目的：一是为了系统的学习关于如何从底层开始写一个渲染引擎，二是为了以后方便给自己用；我会在博客和github上同步更新我的进度，博客的目的是为了把自己开发过程中的思路记录下来，同时也希望能找到志同道合之人一起学习进步，如果自己的经验能够给别人有点帮助那就最好不过了，同时所有的代码都会更新到github当中，如果有人能加入一起造轮子，那我会">
 
 
 
@@ -135,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/05/（url中显示的标题）/"/>
 
 
 
 
 
-  <title>I am no one</title>
+  <title>从零开始写渲染引擎-开篇 | I am no one</title>
   
 
 
@@ -160,8 +165,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -264,9 +268,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -296,9 +300,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/05/（url中显示的标题）/" itemprop="url">从零开始写渲染引擎-开篇</a></h1>
+          <h1 class="post-title" itemprop="name headline">从零开始写渲染引擎-开篇</h1>
         
 
         <div class="post-meta">
@@ -353,7 +355,7 @@
               </span>
               
                 <a href="/2017/09/05/（url中显示的标题）/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://yoursite.com/2017/09/05/（url中显示的标题）/" class="cy_cmt_count" data-xid="2017/09/05/（url中显示的标题）/" itemprop="commentsCount" ></span>
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/09/05/（url中显示的标题）/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -374,6 +376,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
 
           
 
@@ -392,9 +399,7 @@
       
 
       
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​    最近 准备开始写一个自己的渲染引擎，主要有两个目的：一是为了系统的学习关于如何从底层开始写一个渲染引擎，二是为了以后方便给自己用；我会在博客和github上同步更新我的进度，博客的目的是为了把自己开发过程中的思路记录下来，同时也希望能找到志同道合之人一起学习进步，如果自己的经验能够给别人有点帮助那就最好不过了，同时所有的代码都会更新到github当中，如果有人能加入一起造轮子，那我会非常欢迎。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​    最近 准备开始写一个自己的渲染引擎，主要有两个目的：一是为了系统的学习关于如何从底层开始写一个渲染引擎，二是为了以后方便给自己用；我会在博客和github上同步更新我的进度，博客的目的是为了把自己开发过程中的思路记录下来，同时也希望能找到志同道合之人一起学习进步，如果自己的经验能够给别人有点帮助那就最好不过了，同时所有的代码都会更新到github当中，如果有人能加入一起造轮子，那我会非常欢迎。</p>
 <p>​    其实写之前也犹豫了很久，很多人可能会问，现在这么多开源的引擎，为什么不直接用呢，原因其实很简单，就像我之前讲过我对开源的理解，开源并不是说我们能用它做多少事情，而是我们能从开源当前学会多少东西。现在越来越少的人会去自己造轮子，都是直接用现成的东西，所以经常会遇到很多半桶水水平的人，这种人真多很烦，因为我是GIS专业的，而且也是在GIS公司，公司有些所谓的 老鸟，用过一些开源的引擎做了点东西，以为自己对图形学很熟悉了，可是经常连模板测试都一知半解的，然后还跟你争执，真是无语了，这让我更加意识到自己需要把基础打好，不能步其后尘。而造轮子是非常好的学习方法，很多东西真的需要自己动手去一个坑一个坑的跳，你才能对一些知识理解的更深入一点。就比方说学习编译原理最好的方法就是自己写个编译器。</p>
 <p>​    我可能会先从OpenGL开始写起，后面会考虑慢慢更新WebGL版本，不过WebGL版本可能会倾向于数据可视化方面，因为这也是我想研究的一个方向，现在可能自己还需要学习一下，毕竟现在Web端也算是一个趋势了，不过两个版本如果用同一个架构的话，移植还是挺好的，所以，目前还是先把OpenGL版本写好吧！</p>
 <p>##SimpleRenderEngine V1.0框架设计</p>
@@ -403,8 +408,6 @@
 <p>​    其实这个很简单，就是数据丢到mesh当中，纹理丢到textureManager中，然后建个camera，把mesh加到scene中，绘制，OK。具体内部怎么调用，大家可以到github把代码git下来看一下。</p>
 <p>​    我可能不会在博客里将太多理论的东西，因为红宝书上都有，如果有个别不能理解的可以提问，可能后续会有些原理复杂一点的我会专门写篇博客去讲解，我会把思路，其实应该是框架性的东西，分享出来，当我写的过程中不知怎么办的时候，我也会写出来跟大家交流。我是个小白，所以也会有很多问题，希望能得到大牛的指点，也希望自己能坚持下去，只是因为喜欢。</p>
 
-          
-        
       
     </div>
     
@@ -414,355 +417,67 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="yanglusheng WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/02/（url中显示的标题）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yanglusheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ovi6hpv55.bkt.clouddn.com/%E5%A4%B4%E5%83%8F.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="I am no one">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/02/（url中显示的标题）/" itemprop="url">Earth开发原理-基于LRU-K实现瓦片数据析构算法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-02T20:34:21+08:00">
-                2017-09-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Earth开发原理/" itemprop="url" rel="index">
-                    <span itemprop="name">Earth开发原理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/C/" rel="tag"># C++</a>
           
-
+            <a href="/tags/OpenGL/" rel="tag"># OpenGL</a>
           
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2017/09/02/（url中显示的标题）/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://yoursite.com/2017/09/02/（url中显示的标题）/" class="cy_cmt_count" data-xid="2017/09/02/（url中显示的标题）/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/2017/09/02/（url中显示的标题）/" class="leancloud_visitors" data-flag-title="Earth开发原理-基于LRU-K实现瓦片数据析构算法">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <p>​    用户访问三维earth过程中，客户端会源源不断的向服务器请求数据，尤其是多用户并发的情况下，请求更加频繁，所以服务器通常会设置缓存容器，主要是DEM和DOM缓存池，数据从server中请求后，会在服务器同时保留一份。比如请求google 影像，服务器根据wtms服务地址以及用户请求的瓦片层级，然后利用HTTP协议将数据传输至服务器，这时候服务器就将数据进行备份，这样等下一次在请求同样的数据时，就可以直接从服务器中获取，这样可以提高用户访问效率。然而，随着用户访问的增加，服务器缓存压力必然也会加大，所以就需要及时析构一些数据，保证服务器缓存池不会爆。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/02/（url中显示的标题）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/02/（url中显示的标题）/" rel="next" title="Earth开发原理-基于LRU-K实现瓦片数据析构算法">
+                <i class="fa fa-chevron-left"></i> Earth开发原理-基于LRU-K实现瓦片数据析构算法
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/26/（url中显示的标题）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yanglusheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ovi6hpv55.bkt.clouddn.com/%E5%A4%B4%E5%83%8F.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="I am no one">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/26/（url中显示的标题）/" itemprop="url">Earth开发原理-阴影体实现要素贴地</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-26T10:34:21+08:00">
-                2017-08-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Earth开发原理/" itemprop="url" rel="index">
-                    <span itemprop="name">Earth开发原理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2017/08/26/（url中显示的标题）/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://yoursite.com/2017/08/26/（url中显示的标题）/" class="cy_cmt_count" data-xid="2017/08/26/（url中显示的标题）/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/2017/08/26/（url中显示的标题）/" class="leancloud_visitors" data-flag-title="Earth开发原理-阴影体实现要素贴地">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h2 id="关于阴影实现方法概述"><a href="#关于阴影实现方法概述" class="headerlink" title="关于阴影实现方法概述"></a>关于阴影实现方法概述</h2><p>​    <strong>Shadow map:</strong> 阴影的实现技术，我以前实现过比较基础的shadow map，就是利用从光源出发得到的深度图，然后每一个像素去比较当前深度值与深度图中的得到的深度值，深度图其实保存的应该是光源到遮光板之间的距离，而与它比较的是像素到光源的距离，如果小于，则说明处于阴影之中。还有一些细节的改进，比如阴影交叉如何处理（与深度图的分辨率有关，如果多个像素用同一个比较，就会出现这种情况），还有锯齿如何处理等等。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/26/（url中显示的标题）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -772,10 +487,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -783,6 +499,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
 
         </div>
         
@@ -803,8 +525,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ovi6hpv55.bkt.clouddn.com/%E5%A4%B4%E5%83%8F.jpg"
@@ -892,6 +623,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1035,10 +782,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
@@ -1073,7 +820,18 @@
 
 
   
-    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytbQ8t9f"></script>
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytbQ8t9f';
+      var conf = 'a29593692d36dd6143fc58db5ae3845f';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
   
 
 
