@@ -111,7 +111,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/03/30/YwbtVpLrKUPCX97.png">
 <meta property="og:image" content="https://i.loli.net/2020/03/30/xBLf8olEGuO3FAq.png">
 <meta property="og:image" content="https://i.loli.net/2020/03/30/QrSPgaK8Y1N6VUL.png">
-<meta property="og:image" content="https://i.loli.net/2020/03/30/4tjRNxuId9657Ma.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/03/vh8wkelYWcTQZmr.png">
 <meta property="og:image" content="https://i.loli.net/2020/03/30/lXpri2536NO7cmI.png">
 <meta property="og:image" content="https://i.loli.net/2020/03/30/a8FhiQmOTnA5Lzk.png">
 <meta property="og:image" content="https://i.loli.net/2020/03/30/uyAKFm3Q5n4pDeb.png">
@@ -127,7 +127,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/03/30/pb9zQeStANWLZf1.png">
 <meta property="og:image" content="https://i.loli.net/2020/03/30/Eng8sV6jF1NQfdr.png">
 <meta property="og:image" content="https://i.loli.net/2020/03/30/1edpLhX8VuN9HwI.png">
-<meta property="og:updated_time" content="2020-04-01T15:39:52.416Z">
+<meta property="og:updated_time" content="2020-04-03T12:08:54.874Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我的音视频技术路线">
 <meta name="twitter:description" content="​    抖音/快手等短视频APP的风靡，让音视频成为当下最火热的技术，越来越多的人想要进入到这个领域，我自己也是从图形方向刚刚踏入这领域不久，音视频方向所包含的技术栈非常复杂，我自己也在一点一点慢慢钻研，这里面每一个方向都值得深入研究，而且随着5G时代的到来，音视频方向的应用会更加广泛，所以希望自己能掌握更多的关于音视频方向的技能，未来可以探索更多的音视频玩法。然后这篇博客主要是想梳理一下我自己">
@@ -516,8 +516,8 @@
 <p>7.<strong>场景管理</strong></p>
 <p>如何利用四叉树、八叉树管理场景节点，做视锥体裁剪</p>
 <p>……..</p>
-<p>//之前写的earth平台，包括八叉树管理全球数据的想法</p>
-<p><img src="https://i.loli.net/2020/03/30/4tjRNxuId9657Ma.png" alt="global_earth.png"></p>
+<p>之前写的渲染引擎，都包含这些基本模块，大概持续完善了半年左右，对我图形渲染方面的提升非常大，包括自己也写过软光栅器。</p>
+<p><img src="https://i.loli.net/2020/04/03/vh8wkelYWcTQZmr.png" alt="render.png"></p>
 <p><strong>总结：</strong></p>
 <p>学习图形学最好的方式就是造轮子造轮子造轮子，自己写引擎，自己写软光栅器</p>
 <p>学习资料分享：</p>
@@ -712,15 +712,15 @@
 <li>以音频为主时间轴作为同步源;</li>
 <li>以视频为主时间轴作为同步源;</li>
 <li><p>以外部时钟为主时间轴作为同步源;</p>
-<p>​具体用哪一种需要根据场景，比如在线视频播放器，一般会以第一种音频作为主时间轴去对齐视频帧数据，做丢帧和用当前帧处理，比如我之前写的音视频编辑SDK，因为我们有一条固定帧率的时间线，所以我们的对齐方式是以这条固定时间轴来对齐视频。</p>
-<p>​比如当前时间轴如果大于当前decode出来的帧的pts，就直接丢掉，继续找下一帧，如果当前时间轴小于decode出来的帧的pts，超过1一帧的时间就继续用上一帧渲染即可。</p>
+<p>具体用哪一种需要根据场景，比如在线视频播放器，一般会以第一种音频作为主时间轴去对齐视频帧数据，做丢帧和用当前帧处理，比如我之前写的音视频编辑SDK，因为我们有一条固定帧率的时间线，所以我们的对齐方式是以这条固定时间轴来对齐视频。</p>
+<p>比如当前时间轴如果大于当前decode出来的帧的pts，就直接丢掉，继续找下一帧，如果当前时间轴小于decode出来的帧的pts，超过1一帧的时间就继续用上一帧渲染即可。</p>
 </li>
 </ul>
 <h4 id="4-4-多视频多轨道-进阶"><a href="#4-4-多视频多轨道-进阶" class="headerlink" title="4.4 多视频多轨道(进阶)"></a>4.4 多视频多轨道(进阶)</h4><p><img src="https://i.loli.net/2020/03/30/Eng8sV6jF1NQfdr.png" alt="multi_track.png"></p>
-<p>​        视频编辑SDK肯定是需要支持多视频多轨道编辑，如何高效的管理，方便编辑和预览，这里面主要是需要一个好的Multi track的框架支撑，组里面大佬把MLT框架直接拿过用了，这个框架对于多视频多轨道处理真的非常强大，内部有精确的时间戳对齐逻辑，也可以和很多插件配合使用</p>
+<p>​        视频编辑SDK肯定是需要支持多视频多轨道编辑，如何高效的管理，方便编辑和预览，这里面主要是需要一个好的Multi track的框架支撑，在这里推荐一个MLT框架，这个框架对于多视频多轨道处理真的非常强大，内部有精确的时间戳对齐逻辑，只需要关注多轨道数据直接的排列，包括每一个视频片段生产数据，其内部会帮我们做好时间戳对齐，担任也可以和很多插件配合使用，比如movit，ffmpeg等。</p>
 <p>​    基本框架</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">+--------+   +------+   +--------+</span><br><span class="line">|Producer|--&gt;|Filter|--&gt;|Consumer|</span><br><span class="line">+--------+   +------+   +--------+</span><br></pre></td></tr></table></figure>
-<p>具体看Github</p>
+<p>具体的介绍后面单独写一篇博客整理，如下是官网介绍：</p>
 <p><a href="https://github.com/mltframework/mlt" target="_blank" rel="noopener">https://github.com/mltframework/mlt</a></p>
 <h3 id="5-关于传输"><a href="#5-关于传输" class="headerlink" title="5. 关于传输"></a>5. 关于传输</h3><p>这块没做过，对传输协议不太了解，只知道一些理论知识，比如RTMP的分块传输，后面有机会再补齐</p>
 <h4 id="5-1-RTMP"><a href="#5-1-RTMP" class="headerlink" title="5.1 RTMP"></a>5.1 RTMP</h4><h3 id="6-分析音视频APP"><a href="#6-分析音视频APP" class="headerlink" title="6. 分析音视频APP"></a>6. 分析音视频APP</h3><p>​    在开发过程中，对于一个小白来说可能会经常遇到一筹莫展的时候，这时候要学会向同类优秀的应用学习，比如做短视频相关的可以去看抖音/快手怎么做的，做音视频剪辑相关的可以看看见剪映/快影/小影怎么做的，你可以去把他们的包pull出来，比如我在做资源的接入的时候，就对比过快手/抖音/大疆 这几家的资源，看他们的sticker怎样接入，有png序列，有MP4，有自定义GIF格式的。所以从这些APP的packge内部还是能找到一些线索，跟着这些线索再慢慢找到其内部的逻辑，就比如我上面分析抖音潜水艇那个游戏一样，当然也可以去分析其它的一些文件，给你提供思路。</p>
